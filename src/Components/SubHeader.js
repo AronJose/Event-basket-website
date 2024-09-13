@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import Select from 'react-select';
 
 
-function SubHeader() {
+function SubHeader({ query, setQuery }) {
     const dispatch = useDispatch();
     const [categoryList, setCategoryList] = useState([]);
     const [service, setServices] = useState([]);
@@ -14,8 +14,19 @@ function SubHeader() {
         const categories = await dispatch.Common.categories(values);
         setCategoryList(categories);
         const services = await dispatch.Common.services(values);
-        console.log(services, "services")
         setServices(services);
+    };
+
+    const search = async (search) => {
+        setQuery({ ...query, search })
+    };
+
+    const sortCategory = async (category) => {
+        setQuery({ ...query, category })
+    };
+
+    const sortService = async (service) => {
+        setQuery({ ...query, service });
     };
 
     useEffect(() => {
@@ -76,6 +87,7 @@ function SubHeader() {
                 <input
                     className="bg-white rounded-lg md:h-[40px] border-2 border-green-900 md:w-[400px] text-lg md:pl-5"
                     placeholder="Enter a search events"
+                    onChange={(e) => search(e.target.value)}
                 />
             </div>
             <div></div>
@@ -84,15 +96,18 @@ function SubHeader() {
                     <Select
                         styles={customStyles}
                         placeholder="Select categories"
-                        options={categoryOptions} >
-                    </Select>
+                        options={categoryOptions}
+                        onChange={(e) => sortCategory(e.value)}
+                    />
+
                 </div>
                 <div className="relative">
                     <Select
                         styles={customStyles}
                         placeholder="Select Services"
-                        options={serviceOptions} >
-                    </Select>
+                        options={serviceOptions}
+                        onChange={(e) => sortService(e.value)}
+                    />
 
                 </div>
             </div>

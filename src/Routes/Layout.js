@@ -9,7 +9,7 @@ function Layout({ children,header }) {
             {header ? <div>
            
                 <Header />
-                <SubHeader/>
+                {/* <SubHeader/> */}
                 <main>{children}</main>
                 {/* <Footer /> */}
             </div>

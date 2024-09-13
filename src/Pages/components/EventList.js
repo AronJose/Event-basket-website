@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Event from './Event';
 
-function EventList() {
+function EventList({query, setQuery}) {
     const dispatch = useDispatch();
     const [eventsData, setEventsData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -10,7 +10,7 @@ function EventList() {
 
     const fetchEvents = async () => {
         try {
-            let res = await dispatch.Events.getEvents();
+            let res = await dispatch.Events.getEvents(query);
             setEventsData(res);
 
         } catch (err) {
@@ -22,7 +22,7 @@ function EventList() {
     console.log(eventsData, "eventsData");
     useEffect(() => {
         fetchEvents();
-    }, []);
+    }, [query]);
 
     if (loading) {
         return <div>Loading...</div>;

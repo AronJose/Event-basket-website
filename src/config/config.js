@@ -11,7 +11,7 @@ const all = {
         login: "users/login",
         roles:"roles/",
         role:"roles/role",
-        events:"events/getevents",
+        events:"events/list",
         category:"events/category",
         service:"events/service"
     }
