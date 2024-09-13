@@ -1,6 +1,75 @@
-import React from 'react';
+import { input } from '@material-tailwind/react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import Select from 'react-select';
+
 
 function SubHeader() {
+    const dispatch = useDispatch();
+    const [categoryList, setCategoryList] = useState([]);
+    const [service, setServices] = useState([]);
+
+
+    const fetchApiData = async (values) => {
+        const categories = await dispatch.Common.categories(values);
+        setCategoryList(categories);
+        const services = await dispatch.Common.services(values);
+        console.log(services, "services")
+        setServices(services);
+    };
+
+    useEffect(() => {
+        fetchApiData();
+    }, []);
+
+    const serviceOptions = service.map((serviceList) => ({
+        value: serviceList.services,
+        label: serviceList.services,
+    }));
+
+    const categoryOptions = categoryList.map((category) => ({
+        value: category.category_name,
+        label: category.category_name,
+    }));
+
+    const customStyles = {
+        option: (provided, state) => ({
+            ...provided,
+            padding: 10,
+            color: state.isSelected ? 'green' : 'black',
+            backgroundColor: state.isSelected ? 'green' : 'white',
+            backgroundColor: 'transparent',
+            textAlign: 'left',
+        }),
+        control: (provided, state) => ({
+            ...provided,
+            width: '180px',
+            height: '40px',
+            border: '2px solid green',
+            borderRadius: '10px',
+            boxShadow: state.isFocused ? '0 0 0 3px rgba(34,139,34, 0.3)' : 'none',
+            '&:hover': {
+                borderColor: 'darkgreen',
+            },
+            backgroundColor: 'transparent',
+            color: 'white',
+            textAlign: 'left'
+
+
+        }),
+        container: (provided) => ({
+            ...provided,
+            color: 'white',
+        }),
+        singleValue: (provided) => ({
+            ...provided,
+            color: 'white',
+        }),
+        placeholder: (provided) => ({
+            ...provided,
+            color: 'white',
+        }),
+    };
     return (
         <div className="bg-gray-800 h-[60px] grid grid-cols-3 font-serif">
             <div className="flex justify-center items-center">
@@ -12,32 +81,19 @@ function SubHeader() {
             <div></div>
             <div className="w-[600px] flex justify-self-center items-center gap-4">
                 <div className="relative">
-                    <select
-                        className="bg-gray-800 rounded-xl md:h-[40px] md:w-[160px] text-lg md:pl-2 font-bold text-white border-2 border-green-900 appearance-none"
-                    >
-                        <option value="">Select Category</option>
-                        <option value="category1">Category 1</option>
-                        <option value="category2">Category 2</option>
-                        <option value="category3">Category 3</option>
-                        {/* Add more categories as needed */}
-                    </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
-                        ▼
-                    </div>
+                    <Select
+                        styles={customStyles}
+                        placeholder="Select categories"
+                        options={categoryOptions} >
+                    </Select>
                 </div>
                 <div className="relative">
-                    <select
-                        className="bg-gray-800 border-2 border-green-900 text-white rounded-xl md:h-[40px] md:w-[150px] text-lg md:pl-2 font-bold appearance-none"
-                    >
-                        <option value="">Select Services</option>
-                        <option value="service1">Service 1</option>
-                        <option value="service2">Service 2</option>
-                        <option value="service3">Service 3</option>
-                        {/* Add more services as needed */}
-                    </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
-                        ▼
-                    </div>
+                    <Select
+                        styles={customStyles}
+                        placeholder="Select Services"
+                        options={serviceOptions} >
+                    </Select>
+
                 </div>
             </div>
         </div>

@@ -6,10 +6,12 @@ import { useCookies } from 'react-cookie';
 function Header() {
 
   const [cookies, setCookie, removeCookie] = useCookies(['authToken']);
-  console.log(useCookies(['authToken']),"Token");
-    
+  console.log(useCookies(['authToken']), "Token");
+
   const navigate = useNavigate();
-    
+
+  const authToken = cookies.authToken;
+
   const logout = () => {
     removeCookie('authToken');
     navigate("/");
@@ -29,7 +31,21 @@ function Header() {
         <Link className='font-semibold text-gray-600 md:text-lg hover:text-green-600' to="#"><span>Portraiture</span></Link>
         <Link className='font-semibold text-gray-600 md:text-lg hover:text-green-600' to="#"><span>Decorations</span></Link>
         <Link className='font-semibold text-gray-600 md:text-lg hover:text-green-600' to="#"><span>Party</span></Link>
-        <Link className='font-semibold text-gray-600 md:text-lg hover:text-green-600 md:ml-5 border-solid border-2 border-green-500 rounded-lg w-[100px]' to="#"><span>Sign in</span></Link>
+
+        {
+          authToken ? <>
+            <Link className='font-semibold text-gray-600 md:text-lg hover:text-green-600  border-solid border-2 border-green-500 rounded-lg md:w-[100px]' to="/add-event">
+              Add Event
+            </Link>
+            <button
+              onClick={logout}
+              className='font-semibold text-gray-600 md:text-lg hover:text-red-600  border-solid border-2 border-red-500 rounded-lg px-4'>
+              Logout
+            </button>
+          </> :
+            <Link className='font-semibold text-gray-600 md:text-lg hover:text-green-600 md:ml-5 border-solid border-2 border-green-500 rounded-lg w-[100px]' to="/login"><span>Sign in</span></Link>
+
+        }
       </div>
     </div>
   )

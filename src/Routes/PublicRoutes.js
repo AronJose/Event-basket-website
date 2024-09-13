@@ -1,15 +1,19 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import { useCookies } from 'react-cookie'
-function PublicRoutes({ component: Component }) {
+import Layout from "./Layout";
+function PublicRoutes({  component: Component, header }) {
     const [cookies] = useCookies("authToken");
     console.log(cookies.authToken, "cookies");
 
-    return (!cookies.authToken ?
+    return (
+    <>
+    <Layout header={header}/>
+        {!cookies.authToken ?
         
         <Component /> :
-        <Navigate to={{ pathname: '/' }} />
-
+        <Navigate to={{ pathname: '/home' }} />}
+</>
     )
 
 }

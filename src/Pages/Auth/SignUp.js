@@ -38,10 +38,11 @@ function SignUp() {
             const result = await dispatch.Auth.SignUp(values);
             console.log(result);
         }
-        navigate('/');
+        navigate('/home');
     };
 
     useEffect(() => {
+        console.log("hello1")
     }, []);
 
     return (
@@ -112,7 +113,7 @@ function SignUp() {
                                 </button>
                             </div>
 
-                            <p className="text-center">Already have an account? <a href="/" className="text-blue-700">Login</a></p>
+                            <p className="text-center">Already have an account? <a href="/login" className="text-blue-700">Login</a></p>
                         </Form>
                     )}
                 </Formik>

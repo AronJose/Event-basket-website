@@ -11,7 +11,9 @@ const all = {
         login: "users/login",
         roles:"roles/",
         role:"roles/role",
-        events:"events/getevents"
+        events:"events/getevents",
+        category:"events/category",
+        service:"events/service"
     }
 }
 console.log("process.env.NODE_ENV", process.env.REACT_APP_ENV)

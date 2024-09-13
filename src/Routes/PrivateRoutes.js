@@ -9,7 +9,7 @@ function PrivateRoutes({ component: Component, header }) {
         {
             cookies.authToken ?
                 <Component /> :
-                <Navigate to={{ pathname: '/' }} />
+                <Navigate to={{ pathname: '' }} />
         }
     </Layout>
 
