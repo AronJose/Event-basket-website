@@ -13,3 +13,9 @@ export async function services(payload) {
         .get(config.routes.service, payload)
         .then((res) => res.data)
 }
+
+export async function logout(payload) {
+    return api()
+        .get(config.routes.logout, payload)
+        .then((res) => res.data)
+}

@@ -1,4 +1,4 @@
-import { input } from '@material-tailwind/react';
+// import { input } from '@material-tailwind/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Select from 'react-select';
@@ -49,7 +49,7 @@ function SubHeader({ query, setQuery }) {
             padding: 10,
             color: state.isSelected ? 'green' : 'black',
             backgroundColor: state.isSelected ? 'green' : 'white',
-            backgroundColor: 'transparent',
+            // backgroundColor: 'transparent',
             textAlign: 'left',
         }),
         control: (provided, state) => ({
@@ -64,13 +64,14 @@ function SubHeader({ query, setQuery }) {
             },
             backgroundColor: 'transparent',
             color: 'white',
-            textAlign: 'left'
+            textAlign: 'left',
 
 
         }),
         container: (provided) => ({
             ...provided,
             color: 'white',
+            zIndex: '1',
         }),
         singleValue: (provided) => ({
             ...provided,
@@ -82,16 +83,15 @@ function SubHeader({ query, setQuery }) {
         }),
     };
     return (
-        <div className="bg-gray-800 h-[60px] grid grid-cols-3 font-serif">
+        <div className="bg-gray-800 h-[60px] grid grid-cols-2 font-serif">
             <div className="flex justify-center items-center">
                 <input
-                    className="bg-white rounded-lg md:h-[40px] border-2 border-green-900 md:w-[400px] text-lg md:pl-5"
+                    className="bg-white rounded-lg md:h-[40px] border-2 border-green-900 md:w-[500px] text-lg md:pl-5"
                     placeholder="Enter a search events"
                     onChange={(e) => search(e.target.value)}
                 />
             </div>
-            <div></div>
-            <div className="w-[600px] flex justify-self-center items-center gap-4">
+            <div className="w-[500px] flex justify-self-center items-center gap-4">
                 <div className="relative">
                     <Select
                         styles={customStyles}

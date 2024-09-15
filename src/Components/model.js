@@ -22,6 +22,13 @@ export const Common = {
             };
         },
 
+        onLogoutSuccess:(state,logouts)=>{
+            return {
+                ...state,
+                logouts: logouts
+            }; 
+        },
+
     
         displayError: (state, error) => {
             return toast(' 🚀' + error.data.error.errors[0].message, {
@@ -48,6 +55,17 @@ export const Common = {
                 let getCategory = await service.services(payload);
                 this.onServicesSuccess(getCategory);
                 return getCategory;
+            }
+            catch (e) {
+                console.log("inside catch of add user", e.response)
+                this.displayError(e.response)
+            }
+        },
+        async logout(payload) {
+            try {
+                let logoutData = await service.logout(payload);
+                this.onLogoutSuccess(logoutData);
+                return logoutData;
             }
             catch (e) {
                 console.log("inside catch of add user", e.response)
