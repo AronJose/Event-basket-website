@@ -26,12 +26,20 @@ function Event({ event }) {
           ))}
         </div>
 
-        <div>
+        <div className='flex flex-col items-start p-4'>
           <h1 className='font-extrabold text-2xl text-slate-800'>{Event_name}</h1>
-          <p className='text-sm px-2'><FontAwesomeIcon icon={faMapMarkerAlt} className='mr-2' />{place}</p>
-          <p className='text-sm px-2'><FontAwesomeIcon icon={faHome} className='mr-2' />{address}</p>
-          <p className='text-sm text-justify px-2'>{desc}</p>
-          <p className='text-sm'>{category}</p>
+          <p className='text-sm px-2 '><FontAwesomeIcon icon={faMapMarkerAlt} className='mr-2 text-sm text-gray-500' />{place}</p>
+          <p className='text-sm px-2'><FontAwesomeIcon icon={faHome} className='mr-2 text-sm text-gray-500' />{address}</p>
+          <p className='text-sm text-justify p-2'>{desc}</p>
+          <div className='flex space-x-2 p-2'>
+            <p className='text-sm font-semibold'>Categories:</p>
+            <ul className='text-sm flex space-x-2'>
+              {category.map((cat, index) => (
+                <li key={index}>{` ${cat},`}</li>
+              ))}
+            </ul>
+          </div>
+
           <p className='text-sm'>{services}</p>
         </div>
       </div>
