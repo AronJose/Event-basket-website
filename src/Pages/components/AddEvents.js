@@ -56,7 +56,7 @@ function AddEvents() {
     const validationSchema = Yup.object().shape({
         providers: Yup.string().required('Required'),
         Event_name: Yup.string()
-            .max(15, 'Must be 20 characters or less')
+            .max(50, 'Must be 50 characters or less')
             .required('Required'),
         place: Yup.string()
             .max(15, 'Must be 15 characters or less')
