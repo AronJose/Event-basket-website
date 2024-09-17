@@ -27,7 +27,7 @@ function SignIn() {
         console.log(userInfo.message, "userinformaton");
         if (userInfo.message === 'success') {
             Cookies.set('authToken', userInfo.userDetails.token);
-            navigate('/home');
+            navigate('/');
         }
     };
 

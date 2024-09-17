@@ -13,7 +13,10 @@ const all = {
         role:"roles/role",
         events:"events/list",
         category:"events/category",
-        service:"events/service"
+        service:"events/service",
+        provider:"events/common",
+        multiImage:"events/imgM",
+        eventCreation:"events/addEvent"
     }
 }
 console.log("process.env.NODE_ENV", process.env.REACT_APP_ENV)

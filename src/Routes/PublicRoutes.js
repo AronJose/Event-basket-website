@@ -9,10 +9,11 @@ function PublicRoutes({  component: Component, header }) {
     return (
     <>
     <Layout header={header}/>
-        {!cookies.authToken ?
+        {cookies.authToken &&
         
-        <Component /> :
-        <Navigate to={{ pathname: '/home' }} />}
+        <Component /> 
+        // <Navigate to={{ pathname: '/home' }} />
+        }
 </>
     )
 

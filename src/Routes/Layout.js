@@ -3,14 +3,15 @@ import Header from '../Components/Header';
 // import SubHeader from '../Components/SubHeader';
 // import Footer from '../Components/Footer/Footer';
 
-function Layout({ children,header }) {
+function Layout({ children, header }) {
     return (
-        <>
+        <div>
             {header ? <div>
-           
+
                 <Header />
-                {/* <SubHeader/> */}
+                <div className='pt-[80px]'>
                 <main>{children}</main>
+                </div>
                 {/* <Footer /> */}
             </div>
                 :
@@ -19,7 +20,7 @@ function Layout({ children,header }) {
                     {children}
                 </div>}
 
-            </>
+        </div>
     );
 }
 

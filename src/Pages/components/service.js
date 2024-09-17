@@ -22,5 +22,36 @@ export async function getEvents(payload) {
         .then((res) => res.data)
 }
 
+export async function subEventData(payload) {
+  return api()
+      .get(config.routes.provider, payload)
+      .then((res) => res.data)
+}
+
+export async function imageUpload(payload) {
+  const formData = new FormData();
+
+  if (Array.isArray(payload)) {
+    payload.forEach((file, index) => {
+      formData.append('images', file); 
+    });
+  } else {
+    formData.append("images", payload); 
+  }
+
+  const headers = {
+    'Content-Type': 'multipart/form-data',
+  };
+
+  return api()
+    .post(config.routes.multiImage, formData, { headers })
+    .then((res) => res.data);
+}
+
+export async function eventCreation(payload) {
+  return api()
+      .post(config.routes.eventCreation, payload)
+      .then((res) => res.data)
+}
 
 
