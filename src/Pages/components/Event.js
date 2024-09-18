@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faHome } from '@fortawesome/free-solid-svg-icons';
 
 function Event({ event }) {
-  const { Event_name, place, image, desc, category, services, address } = event;
+  const { Event_name, place, image, desc, category, services, address,providing } = event;
   const baseURL = 'http://localhost:8000/'
 
   return (
@@ -31,16 +31,32 @@ function Event({ event }) {
           <p className='text-sm px-2 '><FontAwesomeIcon icon={faMapMarkerAlt} className='mr-2 text-sm text-gray-500' />{place}</p>
           <p className='text-sm px-2'><FontAwesomeIcon icon={faHome} className='mr-2 text-sm text-gray-500' />{address}</p>
           <p className='text-sm text-justify p-2'>{desc}</p>
-          <div className='flex space-x-2 p-2'>
-            <p className='text-sm font-semibold'>Categories:</p>
-            <ul className='text-sm flex space-x-2'>
-              {category.map((cat, index) => (
-                <li key={index}>{` ${cat},`}</li>
-              ))}
-            </ul>
+          <div>
+            <div className='flex space-x-2 p-2'>
+              <p className='text-sm font-semibold'>Categories:</p>
+              <ul className='text-sm flex space-x-2'>
+                {category.map((cat, index) => (
+                  <li key={index}>{` ${cat},`}</li>
+                ))}
+              </ul>
+            </div>
+            <div className='flex space-x-2 p-2'>
+              <p className='text-sm font-semibold'>Providing:</p>
+              <ul className='text-sm flex space-x-2'>
+                {providing.map((provide, index) => (
+                  <li key={index}>{` ${provide},`}</li>
+                ))}
+              </ul>
+            </div>
+            <div className='flex space-x-2 p-2'>
+              <p className='text-sm font-semibold'>Services:</p>
+              <ul className='text-sm flex space-x-2'>
+                {services.map((serve, index) => (
+                  <li key={index}>{` ${serve},`}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-
-          <p className='text-sm'>{services}</p>
         </div>
       </div>
     </div>

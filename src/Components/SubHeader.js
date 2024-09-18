@@ -49,7 +49,7 @@ function SubHeader({ query, setQuery }) {
             padding: 10,
             color: state.isSelected ? 'green' : 'black',
             backgroundColor: state.isSelected ? 'green' : 'white',
-            // backgroundColor: 'transparent',
+            backgroundColor: 'transparent',
             textAlign: 'left',
         }),
         control: (provided, state) => ({
