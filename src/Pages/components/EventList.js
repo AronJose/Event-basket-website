@@ -33,12 +33,12 @@ function EventList({query, setQuery}) {
     }
 
     return (
-        <div className="flex flex-col items-center space-y-4 p-2 border border-gray-100 font-serif">
+        <div>
             {Array.isArray(eventsData) && eventsData.length > 0 ? (
                 eventsData.map((event, index) => (
                     <div
                         key={index}
-                        className="w-full h-80 max-w-5xl bg-white border border-gray-200 rounded-lg shadow-md">
+                        className=" w-full  bg-white rounded-lg shadow-md ">
                         <Event event={event} />
                     </div>
                 ))

@@ -88,6 +88,7 @@ function AddEvents() {
             padding: 10,
             textAlign: 'left',
             color: 'black',
+            overflowY: 'auto',
         }),
         control: (provided) => ({
             ...provided,
@@ -96,10 +97,12 @@ function AddEvents() {
             backgroundColor: 'transparent',
             textAlign: 'left',
             color: 'gray',
+            overflowY: 'auto',
         }),
         container: (provided) => ({
             ...provided,
             color: 'white',
+            overflowY: 'auto',
         }),
 
         placeholder: (provided) => ({
