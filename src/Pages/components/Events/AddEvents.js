@@ -10,9 +10,9 @@ function AddEvents() {
     const [providingData, setProvidingData] = useState([]);
     const [servicesData, setServicesData] = useState([]);
     const [categoryData, setCategoryData] = useState([]);
-    const [submitValue, setSubmitValue] = useState({});
+    // const [submitValue, setSubmitValue] = useState({});
     const [images, setImages] = useState([]);
-    console.log("Form Values:", submitValue);
+    // console.log("Form Values:", submitValue);
 
     const phoneRegExp = /^[0-9]{10}$/;
 

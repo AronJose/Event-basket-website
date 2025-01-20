@@ -19,10 +19,9 @@ function EventList({query, setQuery}) {
             setLoading(false);
         }
     };
-    console.log(eventsData, "eventsData");
     useEffect(() => {
         fetchEvents();
-    }, [query]);
+    }, []);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -38,7 +37,7 @@ function EventList({query, setQuery}) {
                 eventsData.map((event, index) => (
                     <div
                         key={index}
-                        className=" w-full  bg-white rounded-lg shadow-md ">
+                        className=" w-full p-y-2">
                         <Event event={event} />
                     </div>
                 ))

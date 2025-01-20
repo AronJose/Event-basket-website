@@ -1,4 +1,3 @@
-// import { input } from '@material-tailwind/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Select from 'react-select';
@@ -20,14 +19,17 @@ function SubHeader({ query, setQuery }) {
     const search = async (search) => {
         setQuery({ ...query, search })
     };
+    console.log(search);
 
     const sortCategory = async (category) => {
         setQuery({ ...query, category })
     };
+    console.log(sortCategory,"category");
 
     const sortService = async (service) => {
         setQuery({ ...query, service });
     };
+    console.log(sortService,"service");
 
     useEffect(() => {
         fetchApiData();
@@ -89,6 +91,7 @@ function SubHeader({ query, setQuery }) {
                     className="bg-white rounded-lg md:h-[40px] border-2 border-green-900 md:w-[500px] text-lg md:pl-5"
                     placeholder="Enter a search events"
                     onChange={(e) => search(e.target.value)}
+                   
                 />
             </div>
             <div className="w-[500px] flex justify-self-center items-center gap-4">

@@ -4,9 +4,9 @@ import { Routes, Route,Navigate} from 'react-router-dom';
 import SignUp from '../Pages/Auth/SignUp';
 import SignIn from '../Pages/Auth/SignIn';
 import PublicRoute from './PublicRoutes';
-import UserHome from '../Pages/User/UserHome';
+import UserHome from '../Pages/Home/UserHome';
 import PrivateRoutes from './PrivateRoutes';
-import AddEvents from '../Pages/components/AddEvents';
+import AddEvents from '../Pages/components/Events/AddEvents';
 
 function Router() {
     return (

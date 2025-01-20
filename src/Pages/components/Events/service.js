@@ -1,5 +1,5 @@
-import config from '../../config/config';
-import { api } from '../../Helper/axios';
+import config from '../../../config/config';
+import { api } from '../../../Helper/axios';
 
 
 export async function getEvents(payload) {
