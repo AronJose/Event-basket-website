@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route,Navigate} from 'react-router-dom';
-// import Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
 import SignUp from '../Pages/Auth/SignUp';
 import SignIn from '../Pages/Auth/SignIn';
 import PublicRoute from './PublicRoutes';

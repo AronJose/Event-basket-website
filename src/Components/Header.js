@@ -79,7 +79,7 @@ function Header() {
     <div className='z-50 fixed top-0 left-0 w-full bg-white drop-shadow-2xl h-[70px] grid grid-cols-[1fr,auto,2fr] gap-4 font-serif'>
       <div className='flex justify-self-center items-center md:text-2xl text-lg font-extrabold overline decoration-blue-500'>
         <img src={party} alt='Party Logo' className='w-[40px] h-[40px] rounded-full ml-[50px] md:ml-0' />
-        EventsBasket
+        EventsZone
       </div>
       <div className='w-[100px] flex justify-self-start items-center'></div>
       <div className='flex gap-4 justify-self-center items-center '>

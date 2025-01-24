@@ -13,6 +13,7 @@ function AddEvents() {
     // const [submitValue, setSubmitValue] = useState({});
     const [images, setImages] = useState([]);
     // console.log("Form Values:", submitValue);
+    const [selectImages,setSelectedImages]=useState([]);
 
     const phoneRegExp = /^[0-9]{10}$/;
 
@@ -126,10 +127,22 @@ function AddEvents() {
 
     const handleImageChange = async (event, setFieldValue) => {
         const files = Array.from(event.target.files);
-        const multipleImage = await dispatch.Events.imageUpload(files)
-        const filePath = multipleImage.filepaths;
-        setImages(files);
-        setFieldValue('image', multipleImage.filepaths);
+        try {
+            
+            const multipleImage = await dispatch.Events.imageUpload(files)
+            const filePath = multipleImage.filepaths;
+            setImages(files);
+            setFieldValue('image', filePath);
+            setSelectedImages((prev) => [
+                ...prev,
+                ...files.map((file) => ({
+                    id: URL.createObjectURL(file),
+                    file,
+                })),
+            ]);
+        } catch (error) {
+            console.error('Image upload failed:', error);
+        }
     };
 
     const handleEvnetCreation = async(events)=>{

@@ -12,6 +12,7 @@ function EventList({query, setQuery}) {
         try {
             let res = await dispatch.Events.getEvents(query);
             setEventsData(res);
+            console.log(res,"resss")
 
         } catch (err) {
             setError(err.message || 'An error occurred');
